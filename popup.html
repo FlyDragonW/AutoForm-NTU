@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NTU 教學意見調查自動填寫工具</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      min-width: 550px;
+      width: 550px;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>台大教學意見調查 自動填寫器</h1>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="course-feedback">課程回饋</button>
+      <button class="tab-btn" data-tab="ta-feedback">助教回饋</button>
+    </div>
+    <div id="course-feedback" class="tab-content active">
+      <div class="section-title">基本資料題區</div>
+      <div class="form-group">
+        <label>出缺席狀況:</label>
+        <div class="option-group">
+          <select id="ans1-type">
+            <option value="fixed">固定值</option>
+            <option value="random">隨機</option>
+          </select>
+          <div id="ans1-fixed" class="option-value">
+            <select id="ans1">
+              <option value="1">全勤</option>
+              <option value="2" selected>缺課1-2次</option>
+              <option value="3">缺課3-4次</option>
+              <option value="4">缺課5次以上</option>
+            </select>
+          </div>
+          <div id="ans1-random" class="option-value hidden">
+            <label><input type="checkbox" data-value="1"> 全勤</label>
+            <label><input type="checkbox" data-value="2" checked> 缺課1-2次</label>
+            <label><input type="checkbox" data-value="3"> 缺課3-4次</label>
+            <label><input type="checkbox" data-value="4"> 缺課5次以上</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>課外活動:</label>
+        <div class="option-group">
+          <select id="ans2">
+            <option value="1" selected>是</option>
+            <option value="2">否</option>
+          </select>
+          <div id="extracurricular-options" class="option-value">
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="extra-activity" value="做習題" checked> 做習題</label>
+              <label><input type="checkbox" name="extra-activity" value="寫報告"> 寫報告</label>
+              <label><input type="checkbox" name="extra-activity" value="準備口頭報告" checked> 準備口頭報告</label>
+              <label><input type="checkbox" name="extra-activity" value="閱讀心得"> 閱讀心得</label>
+              <label><input type="checkbox" name="extra-activity" value="專案研究"> 專案研究</label>
+              <label><input type="checkbox" name="extra-activity" value="作品或展演"> 作品或展演</label>
+              <label><input type="checkbox" name="extra-activity" value="準備隨堂測驗"> 準備隨堂測驗</label>
+              <label><input type="checkbox" name="extra-activity" value="其他"> 其他</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">課程與教學區</div>
+      <div class="form-group">
+        <label>教師評價:</label>
+        <div class="option-group">
+          <select id="teacher-rating-type">
+            <option value="fixed">固定值</option>
+            <option value="random">隨機範圍</option>
+          </select>
+          <div id="teacher-rating-fixed" class="option-value">
+            <select id="teacher-rating">
+              <option value="5" selected>非常同意(5)</option>
+              <option value="4">同意(4)</option>
+              <option value="3">普通(3)</option>
+              <option value="2">不同意(2)</option>
+              <option value="1">非常不同意(1)</option>
+            </select>
+          </div>
+          <div id="teacher-rating-random" class="option-value hidden">
+            <div class="range-selector">
+              <span>最低:</span>
+              <select id="teacher-rating-min">
+                <option value="3">普通(3)</option>
+                <option value="4">同意(4)</option>
+                <option value="5" selected>非常同意(5)</option>
+              </select>
+              <span>最高:</span>
+              <select id="teacher-rating-max">
+                <option value="4">同意(4)</option>
+                <option value="5" selected>非常同意(5)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">文字意見區</div>
+      <div class="form-group">
+        <label for="opinion1">課程優點:</label>
+        <textarea id="opinion1">1. 課程內容充實，教學方式清楚
+2. 有助於提升相關領域的理解與興趣
+3. 能啟發深入思考與自主學習</textarea>
+      </div>
+      <div class="form-group">
+        <label for="opinion2">改進建議:</label>
+        <textarea id="opinion2">1. 若能提供更多實例或延伸教材會更好
+2. 建議課程節奏稍作調整以利吸收</textarea>
+      </div>
+    </div>
+    <div id="ta-feedback" class="tab-content">
+      <!-- 助教選擇區 -->
+      <div class="section-title">助教選擇</div>
+      
+      <div class="form-group">
+        <label>填寫模式:</label>
+        <div class="option-group">
+          <select id="ta-selection-mode">
+            <option value="all" selected>填寫所有助教</option>
+            <option value="specific">選擇特定助教</option>
+          </select>
+        </div>
+      </div>
+      
+      <div id="specific-tas-container" class="form-group hidden">
+        <label>選擇要填寫的助教:</label>
+        <div id="ta-list" class="checkbox-group">
+          <!-- 助教列表將在頁面載入後動態生成 -->
+          <div class="notice-text">將在表單頁面載入時獲取助教列表</div>
+        </div>
+        <button id="refresh-ta-list" class="small-btn">刷新助教列表</button>
+      </div>
+      
+      <div class="section-title">基本資料題區</div>
+      
+      <!-- 學生出席狀況 -->
+      <div class="form-group">
+        <label>我的出席狀況:</label>
+        <div class="option-group">
+          <select id="ta-attendance">
+            <option value="A15" selected>從不缺課</option>
+            <option value="A14">缺課1-2次</option>
+            <option value="A13">缺課3-5次</option>
+            <option value="A12">缺課6-10次</option>
+            <option value="A11">缺課10次以上</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- TA 出現次數 -->
+      <div class="form-group">
+        <label>TA出現次數:</label>
+        <div class="option-group">
+          <select id="ta-appearance">
+            <option value="A25" selected>14次以上</option>
+            <option value="A24">10-13次</option>
+            <option value="A23">5-9次</option>
+            <option value="A22">1-4次</option>
+            <option value="A21">從未出現</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- 互動次數 -->
+      <div class="form-group">
+        <label>與TA互動次數:</label>
+        <div class="option-group">
+          <select id="ta-interaction-type">
+            <option value="fixed">固定值</option>
+            <option value="random">隨機</option>
+          </select>
+          <div id="ta-interaction-fixed" class="option-value">
+            <select id="ta-interaction">
+              <option value="A35" selected>10次以上</option>
+              <option value="A34">6-10次</option>
+              <option value="A33">3-5次</option>
+              <option value="A32">1-2次</option>
+              <option value="A31">從來沒有</option>
+            </select>
+          </div>
+          <div id="ta-interaction-random" class="option-value hidden">
+            <div class="checkbox-group">
+              <label><input type="checkbox" data-value="A35" checked> 10次以上</label>
+              <label><input type="checkbox" data-value="A34" checked> 6-10次</label>
+              <label><input type="checkbox" data-value="A33"> 3-5次</label>
+              <label><input type="checkbox" data-value="A32"> 1-2次</label>
+              <label><input type="checkbox" data-value="A31"> 從來沒有</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- TA 教學協助事項 -->
+      <div class="form-group">
+        <label>TA教學協助事項:</label>
+        <div class="option-group">
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="ta-assistance" value="A401" checked>協助課堂教學</label>
+            <label><input type="checkbox" name="ta-assistance" value="A402" checked>帶領口語練習</label>
+            <label><input type="checkbox" name="ta-assistance" value="A403">提供課外或課後諮詢</label>
+            <label><input type="checkbox" name="ta-assistance" value="A404" checked>批改作業或考卷</label>
+            <label><input type="checkbox" name="ta-assistance" value="A405">準備教材或教學輔助用具</label>
+            <label><input type="checkbox" name="ta-assistance" value="A406">準備或提供學習資源</label>
+            <label><input type="checkbox" name="ta-assistance" value="A407">維護課程網頁</label>
+            <label><input type="checkbox" name="ta-assistance" value="A408">其他</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">TA 教學表現</div>
+      
+      <!-- TA 評價選項 -->
+      <div class="form-group">
+        <label>TA教學評價:</label>
+        <div class="option-group">
+          <select id="ta-teaching-type">
+            <option value="fixed">固定值</option>
+            <option value="random">隨機範圍</option>
+          </select>
+          <div id="ta-teaching-fixed" class="option-value">
+            <select id="ta-teaching-rating">
+              <option value="5" selected>非常同意(5)</option>
+              <option value="4">同意(4)</option>
+              <option value="3">普通(3)</option>
+              <option value="2">不同意(2)</option>
+              <option value="1">非常不同意(1)</option>
+            </select>
+          </div>
+          <div id="ta-teaching-random" class="option-value hidden">
+            <div class="range-selector">
+              <span>最低:</span>
+              <select id="ta-teaching-min">
+                <option value="3">普通(3)</option>
+                <option value="4" selected>同意(4)</option>
+                <option value="5">非常同意(5)</option>
+              </select>
+              <span>最高:</span>
+              <select id="ta-teaching-max">
+                <option value="4">同意(4)</option>
+                <option value="5" selected>非常同意(5)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- TA 文字意見 -->
+      <div class="form-group">
+        <label for="ta-opinion">TA教學表現意見:</label>
+        <textarea id="ta-opinion">TA非常熱心協助同學解決課堂問題，批改作業也很仔細，給予的回饋十分有幫助</textarea>
+      </div>
+      
+      <!-- TA 個別評語 -->
+      <div id="specific-ta-opinions" class="form-group hidden">
+        <div class="section-title">各助教個別評語</div>
+        <div class="notice-text">選擇特定助教後可以設定個別評語</div>
+        <div id="ta-opinion-containers">
+          <!-- 助教個別評語將在頁面載入後動態生成 -->
+        </div>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button id="saveBtn">儲存設定</button>
+      <button id="fillBtn">自動填寫</button>
+    </div>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+    
+    <!-- 版權信息 -->
+    <div class="copyright">
+      Made by <a href="https://github.com/FlyDragonW" target="_blank">Flydragon</a> & Claude with ❤️
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

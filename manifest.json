@@ -1,0 +1,36 @@
+{
+    "manifest_version": 3,
+    "name": "台大教學意見調查 自動填寫器",
+    "version": "1.0",
+    "description": "自動填寫國立台灣大學教學意見調查表單，支援自訂與隨機填寫",
+    "permissions": ["scripting", "storage"],
+    "host_permissions": [
+        "https://investea.aca.ntu.edu.tw/opinion/n_giveform.asp*",
+        "https://exam.aca.ntu.edu.tw/svta/TaMain.aspx*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://investea.aca.ntu.edu.tw/opinion/n_giveform.asp*"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      },
+      {
+        "matches": ["https://exam.aca.ntu.edu.tw/svta/TaMain.aspx*"],
+        "js": ["content-ta.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "icons": {
+      "128": "icon.png"
+    },
+    "author": "NTU Student",
+    "homepage_url": "https://github.com/yourname/auto-NTU-form"
+  }
+  

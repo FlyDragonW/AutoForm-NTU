@@ -1,0 +1,372 @@
+/* 
+ * NTU 教學意見調查自動填寫工具
+ * 樣式表
+ */
+
+/* 變數宣告 */
+:root {
+  --primary-color: #2196F3;
+  --secondary-color: #f44336;
+  --border-color: #ddd;
+  --background-color: #f5f9ff;
+  --text-color: #333;
+  --light-text: #666;
+  --hover-color: #e1f0ff;
+  --popup-width: 550px;
+}
+
+/* 全局樣式 */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, 'Microsoft JhengHei', sans-serif;
+  font-size: 14px;
+  color: var(--text-color);
+  min-width: var(--popup-width);
+  width: var(--popup-width);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-color);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* 主容器 */
+.container {
+  width: var(--popup-width);
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* 標題樣式 */
+h1 {
+  font-size: 18px;
+  margin: 0 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--primary-color);
+}
+
+/* 表單組件 */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* 資訊提示區塊 */
+.info-text {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: var(--background-color);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--light-text);
+}
+
+.info-text p {
+  margin: 5px 0;
+}
+
+.info-text code {
+  background-color: #f5f5f5;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+/* ===================================
+   標籤頁導航
+   =================================== */
+
+/* 標籤頁樣式 */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--light-text);
+  flex: 1;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.tab-btn:hover {
+  background-color: var(--hover-color);
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ===================================
+   表單元素樣式
+   =================================== */
+
+/* 區段標題 */
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--primary-color);
+}
+
+/* 標籤 */
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* 輸入元素 */
+select {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 選項組 */
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.option-value {
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 範圍選擇器 */
+.range-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.range-selector select {
+  flex: 1;
+}
+
+/* 複選框樣式 */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.checkbox-group label:hover {
+  background-color: var(--hover-color);
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* 文字區域樣式 */
+textarea {
+  width: 100%;
+  height: 80px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ===================================
+   按鈕與狀態區域
+   =================================== */
+
+/* 按鈕和操作區 */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+#saveBtn {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  flex: 1;
+  margin-right: 10px;
+}
+
+#fillBtn {
+  background-color: var(--primary-color);
+  color: white;
+  flex: 1;
+  margin-left: 10px;
+}
+
+/* 小按鈕樣式 */
+.small-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* 狀態訊息樣式 */
+.status {
+  margin-top: 15px;
+  text-align: center;
+  height: 20px;
+  font-weight: bold;
+}
+
+/* 助教列表區域樣式 */
+#specific-tas-container {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#ta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+#ta-list .notice-text {
+  color: var(--light-text);
+  font-style: italic;
+  text-align: center;
+  padding: 5px;
+}
+
+.select-all-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 助教個別評語樣式 */
+#specific-ta-opinions {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.ta-opinion-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.ta-opinion-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.ta-opinion-item label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.notice-text {
+  color: var(--light-text);
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 響應式調整 */
+@media (max-width: 560px) {
+  .container {
+    width: 100%;
+    border-radius: 0;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  button {
+    margin-bottom: 8px;
+  }
+}
+
+/* 版權信息樣式 */
+.copyright {
+  text-align: center;
+  font-size: 12px;
+  color: var(--light-text);
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color);
+}
+
+.copyright a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.copyright a:hover {
+  text-decoration: underline;
+} 
