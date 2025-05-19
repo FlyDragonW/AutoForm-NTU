@@ -3,10 +3,10 @@
 受夠無聊的教學意見調查了嗎？現在你有更方便的選擇！  
 使用台大教學意見調查自動填寫器即可自動填寫這個麻煩的表單
 
-## Why
-- 填表單可以提早看成績，還可以抽獎
-- 但表單超麻煩的，各種欄位都要填（甚至還有 TA 要填）
-- 提升填答率，大家都開心
+## Feature
+- 一鍵填寫期末意見調查表單
+- 一鍵填寫助教意見回饋表單
+- 支援隨機填寫/依固定值填寫
 
 ## Install
 ### Install from Chrome extension store
@@ -32,3 +32,7 @@
 ![image](https://github.com/user-attachments/assets/6354b928-ac7b-4eae-bf5c-de4e7cca1a65)
 ![image](https://github.com/user-attachments/assets/567713d1-1167-4cda-b7aa-90b852fd2ee1)
 
+## Why
+- 填表單可以提早看成績，還可以抽獎
+- 但表單超麻煩的，各種欄位都要填（甚至還有 TA 要填）
+- 提升填答率，大家都開心
