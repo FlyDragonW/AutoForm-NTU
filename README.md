@@ -7,6 +7,7 @@
 - 一鍵填寫期末意見調查表單
 - 一鍵填寫助教意見回饋表單
 - 支援隨機填寫/依固定值填寫
+- 開源專案，歡迎發 PR :)
 
 ## Install
 ### Install from Chrome extension store
@@ -25,7 +26,7 @@
 2. 點選插件藍勾勾圖示
 3. 輸入你想要自動填答的內容，或是維持預設
 4. 點擊自動填寫
-5. Enjoy :)
+5. Enjoy <3
 
 ## ScreenShot
 ![image](https://github.com/user-attachments/assets/a1ce9f2b-8713-43c6-bb23-10695b4c8236)
