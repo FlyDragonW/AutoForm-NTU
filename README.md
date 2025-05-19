@@ -6,6 +6,7 @@
 ## Why
 - 填表單可以提早看成績，還可以抽獎
 - 但表單超麻煩的，各種欄位都要填（甚至還有 TA 要填）
+- 提升填答率，大家都開心
 
 ## Install
 ### Install from Chrome extension store
