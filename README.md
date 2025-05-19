@@ -25,3 +25,9 @@
 3. 輸入你想要自動填答的內容，或是維持預設
 4. 點擊自動填寫
 5. Enjoy :)
+
+## ScreenShot
+![image](https://github.com/user-attachments/assets/a1ce9f2b-8713-43c6-bb23-10695b4c8236)
+![image](https://github.com/user-attachments/assets/6354b928-ac7b-4eae-bf5c-de4e7cca1a65)
+![image](https://github.com/user-attachments/assets/567713d1-1167-4cda-b7aa-90b852fd2ee1)
+
