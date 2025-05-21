@@ -18,7 +18,8 @@
 
 ## Install
 ### Install from Chrome extension store
-(審核中)
+在 Chrome 線上應用程式商店下載 [台大教學意見調查 自動填寫器](https://chromewebstore.google.com/detail/%E5%8F%B0%E5%A4%A7%E6%95%99%E5%AD%B8%E6%84%8F%E8%A6%8B%E8%AA%BF%E6%9F%A5-%E8%87%AA%E5%8B%95%E5%A1%AB%E5%AF%AB%E5%99%A8/anhdebjnohcgblachghaffjlcdgjdjbj?hl=zh-TW&authuser=0)  
+右上角擴充功能(拼圖的圖案) -> 釘選自動填寫器
 
 ### Install it mannually
 下載[這個](https://github.com/FlyDragonW/AutoForm-NTU/releases/download/Release/AutoForm-NTU.zip) zip 檔案，並解壓縮
